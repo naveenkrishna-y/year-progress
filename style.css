@@ -10,47 +10,76 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     height: 100vh;
     overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
+    max-width: 100vw;
 }
 
 .grid-container {
     flex: 1;
     display: grid;
-    gap: 2px;
-    padding: 10px 0;
+    gap: 3px;
+    padding: 5px 0;
     align-content: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
 }
 
-/* Mobile-first grid sizing - smaller boxes */
+/* Mobile-first approach - optimized for phones */
 .grid-container {
-    grid-template-columns: repeat(40, 1fr);
-    gap: 6px;
+    grid-template-columns: repeat(20, 1fr);
 }
 
-@media (min-width: 481px) {
+/* Small phones */
+@media (max-width: 360px) {
     .grid-container {
-        grid-template-columns: repeat(45, 1fr);
+        grid-template-columns: repeat(18, 1fr);
+        gap: 2px;
     }
 }
 
+/* Large phones */
+@media (min-width: 361px) and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(22, 1fr);
+    }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(30, 1fr);
+        gap: 4px;
+    }
+}
+
+/* Desktop */
 @media (min-width: 769px) {
     .grid-container {
-        grid-template-columns: repeat(50, 1fr);
+        grid-template-columns: repeat(35, 1fr);
+        gap: 5px;
     }
 }
 
 .day-box {
     aspect-ratio: 1;
     background-color: #d0d0d0;
-    border-radius: 6px;
+    border-radius: 4px;
     transition: background-color 0.3s ease;
-    min-height: 3px;
+    width: 100%;
+    max-width: 20px;
+    min-width: 8px;
 }
 
 .day-box.completed {
@@ -61,33 +90,63 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    font-size: 16px;
+    padding: 15px 5px 10px 5px;
+    font-size: 14px;
     font-weight: 300;
     color: #cccccc;
+    flex-shrink: 0;
 }
 
 .year {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
 }
 
 .days-left {
-    font-size: 16px;
+    font-size: 14px;
 }
 
-/* Responsive text sizing */
+/* Mobile-specific adjustments */
 @media (max-width: 480px) {
+    .container {
+        padding: 8px;
+    }
+    
     .footer {
-        font-size: 14px;
-        padding: 15px 0;
+        font-size: 12px;
+        padding: 10px 5px 8px 5px;
     }
     
     .year {
-        font-size: 16px;
+        font-size: 14px;
     }
     
     .days-left {
-        font-size: 14px;
+        font-size: 12px;
+    }
+    
+    .day-box {
+        border-radius: 3px;
+        max-width: 15px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .day-box {
+        border-radius: 2px;
+        max-width: 12px;
+    }
+    
+    .footer {
+        font-size: 11px;
+    }
+    
+    .year {
+        font-size: 13px;
+    }
+    
+    .days-left {
+        font-size: 11px;
     }
 }
