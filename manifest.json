@@ -1,6 +1,6 @@
 {
     "name": "Year Progress",
-    "short_name": "YearProgress",
+    "short_name": "Year Progress",
     "description": "Minimalistic year progress tracker with pitch-black design",
     "start_url": "./",
     "display": "standalone",
